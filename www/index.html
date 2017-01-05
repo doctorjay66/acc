@@ -29,6 +29,7 @@ function getAcceleration() {
 		ac.innerHTML = "";
 		//get the current orientation
 		navigator.accelerometer.getCurrentAcceleration(onAccelSuccess, onAccelFailure);
+		alert("in get acc");
 	} else {
 		alert("Please wait,\nPhoneGap is not ready.");
 	}
@@ -41,6 +42,7 @@ function onAccelSuccess(accel) {
 	var d = new Date(accel.timestamp);
 	//Then replace the page's content with the
 	//current acceleration retrieved from the API
+	alert(accel);
 	ac.innerHTML = "<b>Current acceleration</b><hr />X: " +
 		accel.x + "<br />Y: " + accel.y + "<br />Z: " +
 		accel.z + "<br />Timestamp: " + d.toLocaleString() +
