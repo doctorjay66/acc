@@ -30,17 +30,17 @@ function onDeviceReady() {
 	awID = navigator.accelerometer.watchAcceleration(onAccelSuccess, onAccelFailure, accelOptions);
 }
 
-function getAcceleration() {
+/*function getAcceleration() {
 	if (pgr == true) {
 		//Clear the current orientation
 		ac.innerHTML = "";
 		//get the current orientation
 		navigator.accelerometer.getCurrentAcceleration(onAccelSuccess, onAccelFailure);
-		alert("in get acc");
+		//alert("in get acc");
 	} else {
 		alert("Please wait,\nPhoneGap is not ready.");
 	}
-}
+}*/
 
 function onAccelSuccess(accel) {
 	//We received something from the API, so...
