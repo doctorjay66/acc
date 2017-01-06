@@ -6,6 +6,8 @@
 	user-scalable=no;" />
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 <script type="text/javascript" charset="utf-8">
+// Accelerometer watcher ID
+var awID;
 //Accelerometer content
 var ac;
 //PhoneGap Ready variable
@@ -20,7 +22,12 @@ function onDeviceReady() {
 	ac = document.getElementById('accelInfo');
 	//Set the variable that lets other parts of the program
 	//know that PhoneGap is initialized
-	pgr = true;
+	//pgr = true;
+	//Accelerometer Options, read the accelerometer
+	//every half second (500 milliseconds)
+	var accelOptions = { frequency: 500 };
+	//Add the accelerometer watcher
+	awID = navigator.accelerometer.watchAcceleration(onAccelSuccess, onAccelFailure, accelOptions);
 }
 
 function getAcceleration() {
@@ -51,6 +58,8 @@ function onAccelSuccess(accel) {
 
 function onAccelFailure() {
 	alert("Accelerometer error!");
+	//Cancel the watch
+	navigator.accelerometer.clearWatch(awID);
 }
 </script>
 </head>
@@ -58,9 +67,9 @@ function onAccelFailure() {
 	<h1>Example 10-1</h1>
 	<p>This is a PhoneGap application that measures
 		Device acceleration using the Accelerometer API.</p>
-	<p><input type="button"
+	<!--<p><input type="button"
 		value="Refresh Orientation" onclick="getAcceleration();">
-	</p>
+	</p>-->
 	<p id="accelInfo">Nothing to see here (yet), click the button.</p>
 </body>
 </html>
